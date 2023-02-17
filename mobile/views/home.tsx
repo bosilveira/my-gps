@@ -20,9 +20,21 @@ import { Link } from '@react-navigation/native';
 
 import { Menu, Modal, Portal, Provider } from 'react-native-paper';
 import { Drawer } from 'react-native-paper';
+
+import Scanner from '../components/scanner';
+import QRCode from 'react-native-qrcode-svg';
+
+
+import { AppDispatch, RootState } from '../redux/store.redux';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { getToken, logout } from '../redux/loginSlices.redux';
+import { getUsers } from '../redux/userSlices.redux';
+
+
+
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../App';
-
 type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export default function Home({ navigation }: Props) {
@@ -42,6 +54,21 @@ export default function Home({ navigation }: Props) {
 
     const showModal = () => setVisible(true);
     const hideModal = () => setVisible(false);
+
+    const dispatch = useDispatch<AppDispatch>();
+
+    const login = useSelector((state: RootState) => state.login);
+
+    const loginHandler = (email: string) => {
+        try {
+            dispatch(getToken("admin@email2.com"))
+        } catch (error) {
+            console.log('ufa')
+        }
+    }
+
+
+
 
   return (
     <>
@@ -67,13 +94,49 @@ export default function Home({ navigation }: Props) {
             <Button icon="information-outline" mode="contained" onPress={() => navigation.navigate('Disclaimer')} style={{marginVertical: 4}}>Disclaimer</Button>
             <Button icon="help-circle-outline" mode="contained" onPress={() => navigation.navigate('Help')} style={{marginVertical: 4}}>Help</Button>
             <Divider style={{marginVertical: 16}} />
-            <Button icon="logout" mode="contained" buttonColor='rgb(192, 1, 0)' onPress={() => navigation.navigate('Login')}>Logout</Button>
+            <Button icon="logout" mode="contained" buttonColor='rgb(192, 1, 0)' onPress={()=>dispatch(logout())}>Logout</Button>
             </Modal>
         </Portal>
-        
+       
+       <Text>Logged: {login.logged ? 'YES' : 'NO'}</Text>
+       <Text>error: {login.error ? 'YES' : 'NO'}</Text>
+       <Text>token: {login.token}</Text>
+       <Text>loadind: {login.loading ? 'YES' : 'NO'}</Text>
+       <Text>Stored: {login.stored ? 'YES' : 'NO'}</Text>
+       
+        <Button 
+        icon="qrcode-scan" 
+        mode="contained" 
+        onPress={()=>dispatch(getUsers())}
+        style={{marginVertical: 16, marginHorizontal: 32}}>
+        Dispatch Users {login.logged}
+        </Button>
+
+
+
+
+        <Button 
+        icon="qrcode-scan" 
+        mode="contained" 
+        onPress={()=>loginHandler("admin@email2.com")}
+        style={{marginVertical: 16, marginHorizontal: 32}}>
+        Dispatch {login.logged ? 'Logged' :  'Please Login'}
+        </Button>
+
+        <Button 
+        icon="qrcode-scan" 
+        mode="contained" 
+        onPress={() =>navigation.navigate('Scanner')}
+        style={{marginVertical: 16, marginHorizontal: 32}}>
+        Activate Scanner
+        </Button>
+
+
         <Switch value={isSwitchOn} onValueChange={onToggleSwitch} />
 
         <ScannerButton />
+
+        <QRCode/>        
 
     </Provider>
     </>
