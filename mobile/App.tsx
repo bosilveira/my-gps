@@ -19,6 +19,7 @@ import PointsPage from './views/points';
 import PointPage from './views/point';
 import AddPointPage from './views/addPoint';
 import RadarPage from './views/radar';
+import ScannerPage from './views/scanner';
 
 export type RootStackParamList = {
   Home: undefined;
@@ -35,6 +36,7 @@ export type RootStackParamList = {
   Order: undefined,
   AddOrder: undefined,
   SetOrder: undefined,
+  Scanner: undefined,
   Radar: undefined,
   Network: undefined,
   Profile: { userId: string };
@@ -64,6 +66,7 @@ export default function App() {
         <Stack.Screen name="Point" component={PointPage} options={{ headerShown: false }}/>
         <Stack.Screen name="AddPoint" component={AddPointPage} options={{ headerShown: false }}/>
         <Stack.Screen name="Radar" component={RadarPage} options={{ headerShown: false }}/>
+        <Stack.Screen name="Scanner" component={ScannerPage} options={{ headerShown: false }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

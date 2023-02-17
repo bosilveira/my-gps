@@ -23,6 +23,9 @@ import { Drawer } from 'react-native-paper';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../App';
 
+import Scanner from '../components/scanner';
+import QRCode from 'react-native-qrcode-svg';
+
 type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export default function Home({ navigation }: Props) {
@@ -71,9 +74,20 @@ export default function Home({ navigation }: Props) {
             </Modal>
         </Portal>
         
+        <Button 
+        icon="qrcode-scan" 
+        mode="contained" 
+        onPress={() =>navigation.navigate('Scanner')}
+        style={{marginVertical: 16, marginHorizontal: 32}}>
+        Activate Scanner
+        </Button>
+
+
         <Switch value={isSwitchOn} onValueChange={onToggleSwitch} />
 
         <ScannerButton />
+
+        <QRCode/>        
 
     </Provider>
     </>
