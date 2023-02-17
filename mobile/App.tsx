@@ -14,12 +14,13 @@ import AddUserPage from './views/addUser';
 import OrdersPage from './views/orders';
 import OrderPage from './views/order';
 import AddOrderPage from './views/addOrder';
+import SetOrderPage from './views/setOrder';
 import PointsPage from './views/points';
 import PointPage from './views/point';
 import AddPointPage from './views/addPoint';
 import RadarPage from './views/radar';
 
-type RootStackParamList = {
+export type RootStackParamList = {
   Home: undefined;
   Disclaimer: undefined,
   Help: undefined,
@@ -33,6 +34,7 @@ type RootStackParamList = {
   Orders: undefined,
   Order: undefined,
   AddOrder: undefined,
+  SetOrder: undefined,
   Radar: undefined,
   Network: undefined,
   Profile: { userId: string };
@@ -57,6 +59,7 @@ export default function App() {
         <Stack.Screen name="Orders" component={OrdersPage} options={{ headerShown: false }}/>
         <Stack.Screen name="Order" component={OrderPage} options={{ headerShown: false }}/>
         <Stack.Screen name="AddOrder" component={AddOrderPage} options={{ headerShown: false }}/>
+        <Stack.Screen name="SetOrder" component={SetOrderPage} options={{ headerShown: false }}/>
         <Stack.Screen name="Points" component={PointsPage} options={{ headerShown: false }}/>
         <Stack.Screen name="Point" component={PointPage} options={{ headerShown: false }}/>
         <Stack.Screen name="AddPoint" component={AddPointPage} options={{ headerShown: false }}/>

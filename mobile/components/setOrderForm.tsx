@@ -7,8 +7,9 @@ import { Button, Card, Avatar, Text, Divider } from 'react-native-paper';
 import { ProgressBar, MD3Colors } from 'react-native-paper';
 import { Switch, IconButton, List } from 'react-native-paper';
 import { RadioButton, Menu, Provider  } from 'react-native-paper';
+import { TextInput } from 'react-native-paper';
 
-export default function PointList() {
+export default function SetOrderForm() {
 
     const [isSwitchOn, setIsSwitchOn] = React.useState(false);
     const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
@@ -25,30 +26,20 @@ export default function PointList() {
     const [expanded, setExpanded] = React.useState(true);
     const handlePress = () => setExpanded(!expanded);
 
+    const [text, setText] = React.useState('');
+
     return (
     <ScrollView>
-
-
-        <List.Section>
-
-            <Divider style={{marginVertical: 8}} />
-
-            <List.Item
-            title={() => <Text variant="labelLarge">João Guimarães Rosa</Text>}
-            description={() =><>
-            <Text variant="labelMedium">Latitude</Text>
-            <Text variant="labelMedium">Longitude</Text>
-            <Text variant="labelMedium">Speed</Text>
-            </>}
-            left={() => <List.Icon icon="car-connected" />}
-            right={() => <List.Icon icon="arrow-right-drop-circle-outline" />}
-            style={{marginLeft: 16, marginVertical: 8}}
-            />
-
-            <Divider style={{marginVertical: 8}} />
-
-        </List.Section>
-
+        <TextInput
+        mode="outlined"
+        label="Order ID"
+        placeholder=""
+        right={<TextInput.Icon icon="qrcode-scan" />}
+        style={{marginVertical: 8, marginHorizontal: 8}}
+        />
+        <Button icon="tag-search" mode="contained" onPress={() => console.log('Pressed')} style={{marginVertical: 16, marginHorizontal: 32}}>Search Order</Button>
+        <Divider style={{marginVertical: 24}} />
+        <Button icon="qrcode-scan" mode="contained" onPress={() => console.log('Pressed')} style={{marginVertical: 16, marginHorizontal: 32}}>Scan QR-Code</Button>
     </ScrollView>
     );
 }

@@ -33,25 +33,15 @@ export default function OrderList() {
             <Divider style={{marginVertical: 8}} />
 
             <List.Item
-            title="123e4567-e89b-12d3-a456-426614174000"
+            title={() => <Text variant="labelLarge">Package Title</Text>}
             description={() => <>
-                <Text variant="bodyLarge">Package Title</Text>
-                <Text variant="bodyLarge">Flag: Green</Text>
-                <Text variant="bodyLarge">Status: On Delivery</Text>
+                <Text variant="labelMedium">Flag: Green</Text>
+                <Text variant="labelMedium">Status: On Delivery</Text>
             </>}
             left={() => <List.Icon icon="package" />}
-            right={() => <List.Icon icon="arrow-right-drop-circle-outline" />} />
-            <Divider style={{marginVertical: 8}} />
-
-            <List.Item
-            title="123e4567-e89b-12d3-a456-426614174000"
-            description={() => <>
-                <Text variant="bodyLarge">Package Title</Text>
-                <Text variant="bodyLarge">Flag: Green</Text>
-                <Text variant="bodyLarge">Status: On Delivery</Text>
-            </>}
-            left={() => <List.Icon icon="package" />}
-            right={() => <List.Icon icon="arrow-right-drop-circle-outline" />} />
+            right={() => <List.Icon icon="arrow-right-drop-circle-outline" />}
+            style={{marginLeft: 16, marginVertical: 8}}
+            />
             <Divider style={{marginVertical: 8}} />
 
         </List.Section>

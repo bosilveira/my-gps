@@ -5,7 +5,7 @@ import { Appbar } from 'react-native-paper';
 
 import { Button, Card, Avatar, Text, Divider } from 'react-native-paper';
 import { ProgressBar, MD3Colors } from 'react-native-paper';
-import { Switch, IconButton, List } from 'react-native-paper';
+import { Switch, IconButton, List, Chip } from 'react-native-paper';
 import { RadioButton, Menu, Provider  } from 'react-native-paper';
 
 export default function UserList() {
@@ -29,21 +29,20 @@ export default function UserList() {
     <ScrollView>
 
         <List.Section>
-            <List.Subheader>Users</List.Subheader>
-            <Divider style={{marginVertical: 8}} />
 
-            <List.Item
-            title="First Item"
-            description="Delivery"
-            left={() => <List.Icon icon="car" />}
-            right={() => <List.Icon icon="arrow-right-drop-circle-outline" />} />
             <Divider style={{marginVertical: 8}} />
-
+    
             <List.Item
-            title="First Item"
-            description="Delivery"
+            title={() => <Text variant="labelLarge">João Guimarães Rosa</Text>}
+            description={() =><>
+            <Text variant="labelMedium">Department</Text>
+            <Text variant="labelMedium">Available</Text>
+            <Text variant="labelMedium">Status</Text>
+            </>}
             left={() => <List.Icon icon="car" />}
-            right={() => <List.Icon icon="arrow-right-drop-circle-outline" />} />
+            right={() => <List.Icon icon="arrow-right-drop-circle-outline" />}
+            style={{marginLeft: 16, marginVertical: 8}}
+            />
             <Divider style={{marginVertical: 8}} />
 
         </List.Section>

@@ -31,38 +31,32 @@ export default function LoginForm() {
     return (
     <ScrollView>
 
-
-
-    <Card>
-        <Card.Title
-        title="User Login"
-        left={(props) => <Avatar.Icon {...props} icon="account" />}
+        <TextInput
+        mode="outlined"
+        label="User Email"
+        placeholder="user@email.com"
+        right={<TextInput.Icon icon="email" />}
+        style={{marginVertical: 8, marginHorizontal: 8}}
         />
-        <Card.Content>
-
 
         <TextInput
-      mode="outlined"
-      label="User Email"
-      placeholder="user@email.com"
-      right={<TextInput.Icon icon="email" />}
-    />
-    <Divider style={{marginVertical: 8}} />
+        disabled={true}
+        label="Password"
+        secureTextEntry
+        right={<TextInput.Icon icon="eye" />}
+        style={{marginVertical: 8, marginHorizontal: 8}}
+        />
 
-    <TextInput
-    disabled={true}
-      label="Password"
-      secureTextEntry
-      right={<TextInput.Icon icon="eye" />}
-    />
-
-        </Card.Content>
-
-        <Card.Actions>
-        <Button icon="login" mode="contained" onPress={() => console.log('Pressed')}>Login</Button>
-        </Card.Actions>
+        <Button 
+        icon="login" 
+        mode="contained" 
+        onPress={() => console.log('Pressed')}
+        style={{marginVertical: 16, marginHorizontal: 32}}
+        >Login</Button>
         <ProgressBar animatedValue={0.1} style={{marginHorizontal: 12, marginVertical: 8}}/>
-    </Card>
+        
+        <Divider style={{marginVertical: 8}} />
+
     </ScrollView>
     );
 }

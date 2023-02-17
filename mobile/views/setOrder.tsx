@@ -3,13 +3,14 @@ import { View, SafeAreaView, ScrollView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Text } from 'react-native-paper';
 import { SegmentedButtons } from 'react-native-paper';
-import { Appbar } from 'react-native-paper';
-import AddUserForm from '../components/addUserForm';
+import { Appbar, Divider } from 'react-native-paper';
+import AddOrderForm from '../components/addOrderForm';
+import SetOrderForm from '../components/setOrderForm';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../App';
-type Props = NativeStackScreenProps<RootStackParamList, 'AddUser'>;
+type Props = NativeStackScreenProps<RootStackParamList, 'SetOrder'>;
 
-export default function AddUserPage({ navigation }: Props) {
+export default function SetOrderPage({ navigation }: Props) {
   return (
     <>
     <StatusBar 
@@ -17,10 +18,10 @@ export default function AddUserPage({ navigation }: Props) {
         translucent={true}
         backgroundColor="#61dafb"/>
     <Appbar.Header>
-        <Appbar.BackAction onPress={() => navigation.navigate('Users')} />
-        <Appbar.Content title="Add User" />
+        <Appbar.BackAction onPress={() => navigation.navigate('Orders')} />
+        <Appbar.Content title="Set Order" />
     </Appbar.Header>
-    <AddUserForm/>
+    <SetOrderForm/>
     </>
   );
 }

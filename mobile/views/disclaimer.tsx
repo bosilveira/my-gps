@@ -2,8 +2,11 @@ import * as React from 'react';
 import { View, ScrollView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Text, Appbar, Divider, SegmentedButtons } from 'react-native-paper';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import type { RootStackParamList } from '../App';
+type Props = NativeStackScreenProps<RootStackParamList, 'Disclaimer'>;
 
-export default function DisclaimerPage() {
+export default function DisclaimerPage({ navigation }: Props) {
     const [language, setLanguage] = React.useState('pt-BR');
     return (
     <>
@@ -12,6 +15,7 @@ export default function DisclaimerPage() {
         translucent={true}
         backgroundColor="#61dafb"/>
     <Appbar.Header>
+        <Appbar.BackAction onPress={() => navigation.navigate('Home')} />
         <Appbar.Content title="Disclaimer" />
         <Appbar.Action icon="information-outline"/>
     </Appbar.Header>

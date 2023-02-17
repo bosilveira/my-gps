@@ -4,17 +4,12 @@ import { StatusBar } from 'expo-status-bar';
 import { Text } from 'react-native-paper';
 import { SegmentedButtons } from 'react-native-paper';
 import { Appbar, Divider } from 'react-native-paper';
-import UserList from '../components/userList';
-import UserCard from '../components/userCard';
-import PointCard from '../components/pointCard';
-import PointList from '../components/pointList';
-import OrderCard from '../components/orderCard';
-import LoginForm from '../components/loginForm';
-import AddUserForm from '../components/addUserForm';
-import AddOrderForm from '../components/addOrderForm';
 import AddPointForm from '../components/addPointForm';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import type { RootStackParamList } from '../App';
+type Props = NativeStackScreenProps<RootStackParamList, 'AddPoint'>;
 
-export default function AddPointPage() {
+export default function AddPointPage({ navigation }: Props) {
   return (
     <>
     <StatusBar 
@@ -22,7 +17,7 @@ export default function AddPointPage() {
         translucent={true}
         backgroundColor="#61dafb"/>
     <Appbar.Header>
-        <Appbar.BackAction onPress={() => {}} />
+        <Appbar.BackAction onPress={() => navigation.navigate('Points')} />
         <Appbar.Content title="Add Point" />
     </Appbar.Header>
     <AddPointForm/>

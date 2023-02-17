@@ -49,54 +49,33 @@ export default function Home({ navigation }: Props) {
     animated={true}
     translucent={true}
     backgroundColor="#61dafb"/>
-    <Appbar.Header>
-        <Appbar.Content title="My GPS" />
-        <Appbar.Action icon="wifi" onPress={() => navigation.navigate('Help')} />
-        <Appbar.Action icon="signal" onPress={() => navigation.navigate('Users')} />
-        <Appbar.Action icon="sync" onPress={() => {}} />
-        <Appbar.Action icon="sync-alert" onPress={() => {}} />
-        <Appbar.Action  icon="magnify" onPress={() => {}} />
-        <Appbar.Action icon="dots-vertical" onPress={showModal} />
-    </Appbar.Header>
-
     <Provider>
+        <Appbar.Header>
+            <Appbar.Action icon="home" onPress={showModal} />
+            <Appbar.Content title="My GPS" />
+            <Appbar.Action icon="help-circle-outline" onPress={() => navigation.navigate('Help')} />
+            <Appbar.Action icon="dots-vertical" onPress={showModal} />
+        </Appbar.Header>
 
-    <Link to={{ screen: 'Disclaimer'}}>
-        Home
-      </Link>
-    <View style={{height: '100%', padding: 8}}>
-
-    <Portal>
-
-        <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={{backgroundColor: 'white', margin: 24, padding: 24}}>
-          <Text>Example Modal.  Click outside this area to dismiss.</Text>
-          <Button icon="login" mode="contained" onPress={() => navigation.push('Login')}>Login</Button>
-          <Divider style={{marginVertical: 8}} />
-          <Button icon="account-multiple" mode="contained" onPress={() => navigation.navigate('Users')}>Users</Button>
-          <Divider style={{marginVertical: 8}} />
-          <Button icon="dolly" mode="contained" onPress={() => navigation.navigate('Orders')}>Orders</Button>
-          <Divider style={{marginVertical: 8}} />
-          <Button icon="crosshairs" mode="contained" onPress={() => navigation.navigate('Points')}>Points</Button>
-          <Divider style={{marginVertical: 8}} />
-          <Button icon="information-outline" mode="contained" onPress={() => navigation.navigate('Disclaimer')}>Disclaimer</Button>
-          <Divider style={{marginVertical: 8}} />
-          <Button icon="help-circle-outline" mode="contained" onPress={() => navigation.navigate('Help')}>Help</Button>
-        </Modal>
+        <Portal>
+            <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={{backgroundColor: 'white', margin: 24, padding: 24}}>
+            <Button icon="login" mode="contained" onPress={() => navigation.push('Login')} style={{marginVertical: 4}} >Login</Button>
+            <Button icon="broadcast" mode="contained" onPress={() => navigation.push('Network')} style={{marginVertical: 4}}>GPS & Network</Button>
+            <Button icon="account-multiple" mode="contained" onPress={() => navigation.navigate('Users')} style={{marginVertical: 4}}>Users</Button>
+            <Button icon="dolly" mode="contained" onPress={() => navigation.navigate('Orders')} style={{marginVertical: 4}}>Orders</Button>
+            <Button icon="crosshairs" mode="contained" onPress={() => navigation.navigate('Points')} style={{marginVertical: 4}}>Points</Button>
+            <Button icon="information-outline" mode="contained" onPress={() => navigation.navigate('Disclaimer')} style={{marginVertical: 4}}>Disclaimer</Button>
+            <Button icon="help-circle-outline" mode="contained" onPress={() => navigation.navigate('Help')} style={{marginVertical: 4}}>Help</Button>
+            <Divider style={{marginVertical: 16}} />
+            <Button icon="logout" mode="contained" buttonColor='rgb(192, 1, 0)' onPress={() => navigation.navigate('Login')}>Logout</Button>
+            </Modal>
         </Portal>
+        
+        <Switch value={isSwitchOn} onValueChange={onToggleSwitch} />
 
-  <OrderList />
-
-  <Switch value={isSwitchOn} onValueChange={onToggleSwitch} />
-
-    </View>
-
-
-
-    <ScannerButton />
+        <ScannerButton />
 
     </Provider>
-
-
     </>
-  );
+    );
 }
